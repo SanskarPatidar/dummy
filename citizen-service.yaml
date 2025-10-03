@@ -1,0 +1,28 @@
+server:
+  port: 8082
+  address: 0.0.0.0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE}
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    app name: citizen-service # This is the name that shows up in Eureka
+
+spring:
+  application:
+    name: citizen-service
+  data:
+    mongodb:
+      uri: ${MONGO_URI}
+      auto-index-creation: true # indexing
+
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /citizen/v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /citizen/docs
